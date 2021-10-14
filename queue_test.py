@@ -1,14 +1,14 @@
 import unittest
 from unittest import TestCase
 from datetime import datetime
-from fifo import FifoClass
+from queue_FIFO import QueueFIFO
 
 
 class PushTest(TestCase):
-    '''push: add an element to the class'''
+    ''' push: add an element to the class '''
 
-    def test_element_in_fifo(self):
-        instance = FifoClass()
+    def test_inserted_element(self):
+        instance = QueueFIFO()
         element = 'element'
         instance.push(element)
 
@@ -16,10 +16,10 @@ class PushTest(TestCase):
 
 
 class PopTest(TestCase):
-    '''pop: get and remove the oldest element'''
+    ''' pop: get and remove the oldest element '''
 
     def test_removed_element(self):
-        instance = FifoClass()
+        instance = QueueFIFO()
         element = 'element'
         instance.push(element)
         instance.pop()
@@ -27,7 +27,7 @@ class PopTest(TestCase):
         self.assertNotIn(element, instance)
 
     def test_oldest_element(self):
-        instance = FifoClass()
+        instance = QueueFIFO()
         instance.push('first element')
         instance.push('second element')
         instance.push('third element')
@@ -41,16 +41,16 @@ class PopTest(TestCase):
 
 
 class SizeTest(TestCase):
-    '''size: get the number of elements'''
+    ''' size: get the number of elements '''
 
     def test_empty_size(self):
-        instance = FifoClass()
+        instance = QueueFIFO()
         size = instance.size()
 
         self.assertEqual(size, 0)
 
     def test_regular_size(self):
-        instance = FifoClass()
+        instance = QueueFIFO()
         instance.push(1)
         instance.push(2)
         instance.push(3)
@@ -59,7 +59,7 @@ class SizeTest(TestCase):
         self.assertEqual(size, 3)
 
     def test_limit_size(self):
-        instance = FifoClass()
+        instance = QueueFIFO()
 
         for i in range(1_000_000):
             instance.push(i)
@@ -70,12 +70,12 @@ class SizeTest(TestCase):
 
 
 class TimeTest(TestCase):
-    '''addition_time: get the datetime when any element present on the FIFO was added'''
+    ''' addition_time: get the datetime when any element present on the FIFO was added '''
 
     def test_elements_times(self):
-        '''Get the creation datetime of any element using its index'''
+        ''' Get the creation datetime of any element using its index '''
 
-        instance = FifoClass()
+        instance = QueueFIFO()
         start_time = datetime.now()
         instance.push(1)
         instance.push(2)
@@ -92,29 +92,21 @@ class TimeTest(TestCase):
         self.assertLessEqual(third_time, end_time)
 
     def test_default_times(self):
-        '''If no position is specified by default return last element addition'''
+        ''' If no position is specified by default return first element addition '''
 
-        instance = FifoClass()
+        instance = QueueFIFO()
         instance.push(1)
         instance.push(2)
         instance.push(3)
 
-        last_time = instance.addition_time(2)
+        first_time = instance.addition_time(0)
         default_time = instance.addition_time()
-        self.assertEqual(default_time, last_time)
-
-        instance.pop()
-        default_time = instance.addition_time()
-        self.assertEqual(default_time, last_time)
-
-        instance.pop()
-        default_time = instance.addition_time()
-        self.assertEqual(default_time, last_time)
+        self.assertEqual(default_time, first_time)
 
     def test_out_of_range_time(self):
-        '''Check if 'out of range' error raises exception'''
+        ''' Check if 'out of range' error raises exception '''
 
-        instance = FifoClass()
+        instance = QueueFIFO()
         instance.push(1)
         instance.push(2)
         instance.push(3)
