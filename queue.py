@@ -2,8 +2,8 @@ from datetime import datetime
 from typing import Any
 
 
-class StackLIFO(list):
-    ''' Implement a Stack-LIFO class (Last in First Out) '''
+class Queue(list):
+    ''' Implement a Queue-FIFO class (First in First Out) '''
 
     def __init__(self) -> None:
         ''' Instantiate times list '''
@@ -17,10 +17,10 @@ class StackLIFO(list):
         self.times.append(datetime.now())
 
     def pop(self) -> Any:
-        ''' Get and remove the newest element '''
+        ''' Get and remove the oldest element '''
 
-        element = super().pop()
-        self.times.pop()
+        element = super().pop(0)
+        self.times.pop(0)
         return element
 
     def size(self) -> int:
@@ -29,9 +29,9 @@ class StackLIFO(list):
         size = len(self)
         return size
 
-    def addition_time(self, position: int = -1) -> datetime:
+    def addition_time(self, position: int = 0) -> datetime:
         ''' Get the datetime when any element present on the FIFO was added.
-        If no position is specified by default return last element addition '''
+        If no position is specified by default return first element addition '''
         
         time = self.times[position]
         return time

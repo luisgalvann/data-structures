@@ -1,14 +1,14 @@
 import unittest
 from unittest import TestCase
 from datetime import datetime
-from queue_FIFO import QueueFIFO
+from queue import Queue
 
 
 class PushTest(TestCase):
     ''' push: add an element to the class '''
 
     def test_inserted_element(self):
-        instance = QueueFIFO()
+        instance = Queue()
         element = 'element'
         instance.push(element)
 
@@ -19,7 +19,7 @@ class PopTest(TestCase):
     ''' pop: get and remove the oldest element '''
 
     def test_removed_element(self):
-        instance = QueueFIFO()
+        instance = Queue()
         element = 'element'
         instance.push(element)
         instance.pop()
@@ -27,7 +27,7 @@ class PopTest(TestCase):
         self.assertNotIn(element, instance)
 
     def test_oldest_element(self):
-        instance = QueueFIFO()
+        instance = Queue()
         instance.push('first element')
         instance.push('second element')
         instance.push('third element')
@@ -44,13 +44,13 @@ class SizeTest(TestCase):
     ''' size: get the number of elements '''
 
     def test_empty_size(self):
-        instance = QueueFIFO()
+        instance = Queue()
         size = instance.size()
 
         self.assertEqual(size, 0)
 
     def test_regular_size(self):
-        instance = QueueFIFO()
+        instance = Queue()
         instance.push(1)
         instance.push(2)
         instance.push(3)
@@ -59,7 +59,7 @@ class SizeTest(TestCase):
         self.assertEqual(size, 3)
 
     def test_limit_size(self):
-        instance = QueueFIFO()
+        instance = Queue()
 
         for i in range(1_000_000):
             instance.push(i)
@@ -75,7 +75,7 @@ class TimeTest(TestCase):
     def test_elements_times(self):
         ''' Get the creation datetime of any element using its index '''
 
-        instance = QueueFIFO()
+        instance = Queue()
         start_time = datetime.now()
         instance.push(1)
         instance.push(2)
@@ -94,7 +94,7 @@ class TimeTest(TestCase):
     def test_default_times(self):
         ''' If no position is specified by default return first element addition '''
 
-        instance = QueueFIFO()
+        instance = Queue()
         instance.push(1)
         instance.push(2)
         instance.push(3)
@@ -106,7 +106,7 @@ class TimeTest(TestCase):
     def test_out_of_range_time(self):
         ''' Check if 'out of range' error raises exception '''
 
-        instance = QueueFIFO()
+        instance = Queue()
         instance.push(1)
         instance.push(2)
         instance.push(3)
