@@ -32,12 +32,12 @@ class PopTest(TestCase):
         instance.push('second element')
         instance.push('third element')
 
-        oldest_element = instance.pop()
-        self.assertEqual(oldest_element, 'third element')
-        oldest_element = instance.pop()
-        self.assertEqual(oldest_element, 'second element')
-        oldest_element = instance.pop()
-        self.assertEqual(oldest_element, 'first element')
+        newest_element = instance.pop()
+        self.assertEqual(newest_element, 'third element')
+        newest_element = instance.pop()
+        self.assertEqual(newest_element, 'second element')
+        newest_element = instance.pop()
+        self.assertEqual(newest_element, 'first element')
 
 
 class SizeTest(TestCase):
