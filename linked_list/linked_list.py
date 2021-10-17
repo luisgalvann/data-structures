@@ -26,8 +26,8 @@ class LinkedList:
     def __repr__(self) -> str:
         if self.head:
             return str([x for x in self])
-        return 'None'
-
+        return str()
+        
     def set_head(self, data: Any) -> None:
         node = self.Node(data)
         node.next = self.head
