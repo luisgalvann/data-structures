@@ -33,10 +33,10 @@ class LinkedList:
             self.head = self.Node(data)
 
     def get_tail(self) -> Node:
-        if self.head.next:
+        if self.head:
             *_, last = self
             return last
-        return self.head
+        return None
 
     def __repr__(self) -> str:
         if self.head:
