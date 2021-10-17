@@ -16,7 +16,18 @@ class LinkedList:
 
     def __init__(self) -> None:
         self.head: Node = None
-    
+
+    def __repr__(self) -> str:
+        if self.head:
+            return str([x for x in self])
+        return 'None'
+
+    def __iter__(self) -> Any:
+        current = self.head
+        while current:
+            yield current
+            current = current.next
+
     def set_head(self, data: Any) -> None:
         node = self.Node(data)
         node.next = self.head
@@ -37,14 +48,3 @@ class LinkedList:
             *_, tail = self
             return tail
         return None
-
-    def __repr__(self) -> str:
-        if self.head:
-            return str([x for x in self])
-        return 'None'
-
-    def __iter__(self) -> Any:
-        current = self.head
-        while current:
-            yield current
-            current = current.next
