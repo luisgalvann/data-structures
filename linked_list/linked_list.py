@@ -40,9 +40,7 @@ class LinkedList:
 
     def __repr__(self) -> str:
         if self.head:
-            result = []
-            for node in self:
-                result.append(node)
+            result = [x for x in self]
             return str(result)
         return 'None'
 
