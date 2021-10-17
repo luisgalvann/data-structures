@@ -27,15 +27,15 @@ class LinkedList:
 
     def set_tail(self, data: Any) -> None:
         if self.head:
-            *_, last = self
-            last.next = self.Node(data)
+            *_, tail = self
+            tail.next = self.Node(data)
         else:
             self.head = self.Node(data)
 
     def get_tail(self) -> Node:
         if self.head:
-            *_, last = self
-            return last
+            *_, tail = self
+            return tail
         return None
 
     def __repr__(self) -> str:
