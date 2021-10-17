@@ -9,7 +9,7 @@ class LinkedList:
 
         def __init__(self, data) -> None:
             self.data = data
-            self.next = None
+            self.next: Node = None
         
         def __repr__(self) -> str:
             return str(self.data)
