@@ -25,7 +25,7 @@ class LinkedList:
     def get_head(self) -> Node:
         return self.head
 
-    def set_tail(self, data) -> None:
+    def set_tail(self, data: Any) -> None:
         if not self.head:
             self.head = self.Node(data)
         else:
