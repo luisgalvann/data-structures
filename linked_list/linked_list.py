@@ -40,8 +40,7 @@ class LinkedList:
 
     def __repr__(self) -> str:
         if self.head:
-            result = [x for x in self]
-            return str(result)
+            return str([x for x in self])
         return 'None'
 
     def __iter__(self) -> Any:
