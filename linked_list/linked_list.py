@@ -8,7 +8,7 @@ class LinkedList:
         ''' Inner class «Node» implementation '''
 
         def __init__(self, data) -> None:
-            self.data = data
+            self.data: Any = data
             self.next: Node = None
         
         def __repr__(self) -> str:
