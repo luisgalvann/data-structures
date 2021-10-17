@@ -17,7 +17,7 @@ class LinkedList:
     def __init__(self) -> None:
         self.head: Node = None
     
-    def set_head(self, data) -> None:
+    def set_head(self, data: Any) -> None:
         node = self.Node(data)
         node.next = self.head
         self.head = node
