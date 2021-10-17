@@ -26,27 +26,26 @@ class LinkedList:
         return self.head
 
     def set_tail(self, data: Any) -> None:
-        if not self.head:
-            self.head = self.Node(data)
-        else:
+        if self.head:
             *_, last = self
             last.next = self.Node(data)
+        else:
+            self.head = self.Node(data)
 
     def get_tail(self) -> Node:
-        if not self.head.next:
-            return self.head
-        else:
+        if self.head.next:
             *_, last = self
             return last
+        return self.head
 
     def __repr__(self) -> str:
-        if not self.head:
-            return 'None'
-        result = []
-        for node in self:
-            result.append(node)
-        return str(result)
-        
+        if self.head:
+            result = []
+            for node in self:
+                result.append(node)
+            return str(result)
+        return 'None'
+
     def __iter__(self) -> Any:
         current = self.head
         while current:
