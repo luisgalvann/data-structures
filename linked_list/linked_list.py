@@ -52,7 +52,6 @@ class LinkedList:
     def check_index(self, pos: int) -> None:
         if not (lng:= len([*self])):
             raise IndexError('empty linked list')
-
         elif (pos < 0) or (pos > lng-1):
             raise IndexError('index out of range')
 
