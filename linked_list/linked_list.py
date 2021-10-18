@@ -48,3 +48,22 @@ class LinkedList:
             *_, tail = self
             return tail
         return None
+
+    def check_index(self, pos: int) -> None:
+        if not (lng:= len([*self])):
+            raise IndexError('empty linked list')
+
+        elif (pos < 0) or (pos > lng-1):
+            raise IndexError('index out of range')
+
+    def delete_node(self, pos: int) -> None:
+        self.check_index(pos)
+        previous = None
+        for i, current in enumerate(self):
+            if i == pos:
+                break
+            previous = current
+        if previous:
+            previous.next = current.next
+        else:
+            self.head = current.next
