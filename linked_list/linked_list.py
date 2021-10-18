@@ -27,7 +27,11 @@ class LinkedList:
         if self.head:
             return str([*self])
         return str()
-        
+
+    def size(self) -> int:
+        size = len([*self])
+        return size
+
     def set_head(self, data: Any) -> None:
         node = self.Node(data)
         node.next = self.head
@@ -71,10 +75,10 @@ class LinkedList:
 
     def set_node(self, pos: int, data: Any) -> None:
         node = self.Node(data)
-        if not (lng:= len([*self])):
+        if not self.size():
             self.head = node
             return
-        if (pos < 0) or (pos > lng-1):
+        if (pos < 0) or (pos > self.size()-1):
             raise IndexError('index out of range')
 
         previous = None
@@ -90,7 +94,7 @@ class LinkedList:
             self.head = node
 
     def get_node(self, pos: int) -> Any:
-        if (pos < 0) or (pos > len([*self])-1):
+        if (pos < 0) or (pos+1 > self.size()):
             raise IndexError('index out of range')
 
         for i, current in enumerate(self):
@@ -98,9 +102,9 @@ class LinkedList:
                 return current
 
     def pop_node(self, pos: int) -> None:
-        if not (lng:= len([*self])):
+        if not self.size():
             raise IndexError('pop from empty list')
-        elif (pos < 0) or (pos > lng-1):
+        elif (pos < 0) or (pos+1 > self.size()):
             raise IndexError('index out of range')
 
         previous = None
