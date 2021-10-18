@@ -49,14 +49,12 @@ class LinkedList:
             return tail
         return None
 
-    def check_index(self, pos: int) -> None:
+    def pop_node(self, pos: int) -> None:
         if not (lng:= len([*self])):
             raise IndexError('pop from empty list')
         elif (pos < 0) or (pos > lng-1):
             raise IndexError('index out of range')
 
-    def pop_node(self, pos: int) -> None:
-        self.check_index(pos)
         previous = None
         for i, current in enumerate(self):
             if i == pos:
@@ -66,3 +64,23 @@ class LinkedList:
             previous.next = current.next
         else:
             self.head = current.next
+
+    def insert_node(self, pos: int, data: Any) -> None:
+        node = self.Node(data)
+        if not (lng:= len([*self])):
+            self.head = node
+            return
+        if (pos < 0) or (pos > lng-1):
+            raise IndexError('index out of range')
+
+        previous = None
+        for i, current in enumerate(self):
+            if i == pos:
+                break
+            previous = current
+        if previous:
+            node.next = current
+            previous.next = node
+        else:
+            node.next = self.head
+            self.head = node
