@@ -36,6 +36,15 @@ class LinkedList:
     def get_head(self) -> Node:
         return self.head
 
+    def pop_head(self) -> Node:
+        if self.head:
+            if self.head.next:
+                self.head = self.head.next
+            else:
+                self.head = None
+        else:
+            raise IndexError('pop from empty list')
+
     def set_tail(self, data: Any) -> None:
         if self.head:
             *_, tail = self
@@ -48,6 +57,17 @@ class LinkedList:
             *_, tail = self
             return tail
         return None
+
+    def pop_tail(self) -> Node:
+        if self.head:
+            if self.head.next:
+                *_, previous, tail = self
+                previous.next = None
+            else:
+                self.head = None
+
+        else:
+            raise IndexError('pop from empty list')
 
     def set_node(self, pos: int, data: Any) -> None:
         node = self.Node(data)
