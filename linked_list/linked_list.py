@@ -66,7 +66,6 @@ class LinkedList:
                 previous.next = None
             else:
                 self.head = None
-
         else:
             raise IndexError('pop from empty list')
 
