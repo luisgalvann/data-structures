@@ -24,13 +24,10 @@ class LinkedList:
             current = current.next
 
     def __repr__(self) -> str:
-        if self.head:
-            return str([*self])
-        return str()
+        return str([*self]) if self.head else ''
 
     def size(self) -> int:
-        size = len([*self])
-        return size
+        return len([*self])
 
     def set_head(self, data: Any) -> None:
         node = self.Node(data)
@@ -78,7 +75,7 @@ class LinkedList:
         if not self.size():
             self.head = node
             return
-        if (pos < 0) or (pos > self.size()-1):
+        if (pos < 0) or (pos+1 > self.size()):
             raise IndexError('index out of range')
 
         previous = None
