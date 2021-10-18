@@ -51,11 +51,11 @@ class LinkedList:
 
     def check_index(self, pos: int) -> None:
         if not (lng:= len([*self])):
-            raise IndexError('empty linked list')
+            raise IndexError('pop from empty list')
         elif (pos < 0) or (pos > lng-1):
             raise IndexError('index out of range')
 
-    def delete_node(self, pos: int) -> None:
+    def pop_node(self, pos: int) -> None:
         self.check_index(pos)
         previous = None
         for i, current in enumerate(self):
