@@ -23,7 +23,7 @@ class LinkedList:
             yield current
             current = current.next
 
-    def __contains__(self, data):
+    def __contains__(self, data: Any) -> bool:
         for node in self:
             if node.data == data:
                 return True
@@ -35,7 +35,7 @@ class LinkedList:
     def size(self) -> int:
         return len([*self])
 
-    def get_head(self) -> Node:
+    def get_head(self) -> Any:
         return self.head.data
 
     def set_head(self, data: Any) -> None:
@@ -43,7 +43,7 @@ class LinkedList:
         node.next = self.head
         self.head = node
 
-    def pop_head(self) -> Node:
+    def pop_head(self) -> None:
         if self.head:
             if self.head.next:
                 self.head = self.head.next
@@ -52,7 +52,7 @@ class LinkedList:
         else:
             raise IndexError('pop from empty list')
 
-    def get_tail(self) -> Node:
+    def get_tail(self) -> Any:
         if self.head:
             *_, tail = self
             return tail.data
@@ -65,7 +65,7 @@ class LinkedList:
         else:
             self.head = self.Node(data)
 
-    def pop_tail(self) -> Node:
+    def pop_tail(self) -> None:
         if self.head:
             if self.head.next:
                 *_, previous, tail = self
