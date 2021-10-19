@@ -23,6 +23,12 @@ class LinkedList:
             yield current
             current = current.next
 
+    def __contains__(self, data):
+        for node in self:
+            if node.data == data:
+                return True
+        return False
+
     def __repr__(self) -> str:
         return str([*self]) if self.head else ''
 
@@ -30,7 +36,7 @@ class LinkedList:
         return len([*self])
 
     def get_head(self) -> Node:
-        return self.head
+        return self.head.data
 
     def set_head(self, data: Any) -> None:
         node = self.Node(data)
@@ -49,7 +55,7 @@ class LinkedList:
     def get_tail(self) -> Node:
         if self.head:
             *_, tail = self
-            return tail
+            return tail.data
         return None
 
     def set_tail(self, data: Any) -> None:
@@ -75,15 +81,18 @@ class LinkedList:
 
         for i, current in enumerate(self):
             if i == pos:
-                return current
-                
+                return current.data
+
     def set_node(self, pos: int, data: Any) -> None:
         node = self.Node(data)
         if not self.size():
             self.head = node
             return
-        if (pos < 0) or (pos+1 > self.size()):
+        elif (pos < 0) or (pos > self.size()):
             raise IndexError('index out of range')
+        elif pos == self.size():
+            self.set_tail(data)
+            return
 
         previous = None
         for i, current in enumerate(self):
