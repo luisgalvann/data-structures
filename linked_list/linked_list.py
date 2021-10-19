@@ -93,8 +93,8 @@ class LinkedList:
         elif (pos < 0) or (pos > self.size()):
             raise IndexError('index out of range')
 
-        node = self.Node(data)
         previous = None
+        node = self.Node(data)
         for i, current in enumerate(self):
             if i == pos:
                 break
