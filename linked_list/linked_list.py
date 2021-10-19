@@ -30,7 +30,7 @@ class LinkedList:
         return False
 
     def __repr__(self) -> str:
-        return str([*self]) if self.head else ''
+        return str([*self])
 
     def size(self) -> int:
         return len([*self])
