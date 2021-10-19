@@ -104,7 +104,7 @@ class LinkedList:
             self.head = node
 
     def pop_node(self, pos: int) -> None:
-        if not self.size():
+        if not self.head:
             raise IndexError('pop from empty list')
         elif (pos < 0) or (pos+1 > self.size()):
             raise IndexError('index out of range')
