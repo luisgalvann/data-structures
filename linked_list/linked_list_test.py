@@ -148,18 +148,16 @@ class SizeTest(TestCase):
 
     def test_empty_size(self):
         instance = LinkedList()
-        size = instance.size
 
-        self.assertEqual(size, 0)
+        self.assertEqual(instance.size, 0)
 
     def test_regular_size(self):
         instance = LinkedList()
         instance.set_head(1)
         instance.set_head(2)
         instance.set_head(3)
-        size = instance.size
 
-        self.assertEqual(size, 3)
+        self.assertEqual(instance.size, 3)
 
     def test_limit_size(self):
         instance = LinkedList()
@@ -167,9 +165,7 @@ class SizeTest(TestCase):
         for i in range(10_000):
             instance.set_tail(i)
 
-        size = instance.size
-
-        self.assertEqual(size, 10_000)
+        self.assertEqual(instance.size, 10_000)
 
 
 class EmptyTest(TestCase):
