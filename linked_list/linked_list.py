@@ -84,9 +84,8 @@ class LinkedList:
                 return current.data
 
     def set_node(self, pos: int, data: Any) -> None:
-        node = self.Node(data)
         if not self.size():
-            self.head = node
+            self.set_head(data)
             return
         elif pos == self.size():
             self.set_tail(data)
@@ -94,6 +93,7 @@ class LinkedList:
         elif (pos < 0) or (pos > self.size()):
             raise IndexError('index out of range')
 
+        node = self.Node(data)
         previous = None
         for i, current in enumerate(self):
             if i == pos:
