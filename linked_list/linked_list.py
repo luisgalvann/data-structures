@@ -84,7 +84,7 @@ class LinkedList:
                 return current.data
 
     def set_node(self, pos: int, data: Any) -> None:
-        if not self.size():
+        if not self.head:
             self.set_head(data)
             return
         elif pos == self.size():
