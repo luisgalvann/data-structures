@@ -98,7 +98,7 @@ class GetTest(TestCase):
 
 
 class PopTest(TestCase):
-    ''' Test retrieving elements from the class '''
+    ''' Test deleting elements from the class '''
 
     def test_pop_head(self):
         instance = LinkedList()
