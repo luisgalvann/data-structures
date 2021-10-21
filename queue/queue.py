@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Any
+from typing import Any, Optional
 
 
 class Queue(list):
@@ -29,7 +29,7 @@ class Queue(list):
         size = len(self)
         return size
 
-    def addition_time(self, position: int = 0) -> datetime:
+    def addition_time(self, position: Optional[int] = 0) -> datetime:
         ''' Get the datetime when any element present on the FIFO was added.
         If no position is specified by default return first element addition '''
         

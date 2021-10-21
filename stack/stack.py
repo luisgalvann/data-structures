@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Any
+from typing import Any, Optional
 
 
 class Stack(list):
@@ -29,7 +29,7 @@ class Stack(list):
         size = len(self)
         return size
 
-    def addition_time(self, position: int = -1) -> datetime:
+    def addition_time(self, position: Optional[int] = -1) -> datetime:
         ''' Get the datetime when any element present on the FIFO was added.
         If no position is specified by default return last element addition '''
         
