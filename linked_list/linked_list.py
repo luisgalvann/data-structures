@@ -87,7 +87,7 @@ class LinkedList:
         if pos == self.size:
             return self.set_tail(data)
 
-        current, previous = self.get_previous(pos)
+        current, previous = self.get_curprev(pos)
         node = self.Node(data)
         if previous:
             node.next = current
@@ -100,13 +100,13 @@ class LinkedList:
         if not self.head:
             raise IndexError('pop from empty list')
         
-        current, previous = self.get_previous(pos)
+        current, previous = self.get_curprev(pos)
         if previous:
             previous.next = current.next
         else:
             self.head = current.next
 
-    def get_previous(self, pos: int) -> Tuple[Any, Optional[Any]]:
+    def get_curprev(self, pos: int) -> Tuple[Any, Optional[Any]]:
         previous = None
         for i, current in enumerate(self):
             if i == pos:
