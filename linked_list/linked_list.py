@@ -85,8 +85,8 @@ class LinkedList:
         else:
             node = self.Node(data)
             previous, current = self.get_prev(pos)
-            node.next = current
             previous.next = node
+            node.next = current
 
     def pop_node(self, pos: int) -> None:
         if not self.head:
