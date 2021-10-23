@@ -77,19 +77,16 @@ class LinkedList:
             raise IndexError('pop from empty list')
 
     def get_node(self, pos: int) -> Any:
-        if (pos < 0) or (pos+1 > self.size):
-            raise IndexError('index out of range')
-
         for i, current in enumerate(self):
             if i == pos:
                 return current.data
+        else:
+            raise IndexError('index out of range')
 
     def set_node(self, pos: int, data: Any) -> None:
         if pos == self.size:
             self.set_tail(data)
             return
-        elif (pos < 0) or (pos > self.size):
-            raise IndexError('index out of range')
 
         previous = None
         node = self.Node(data)
@@ -97,6 +94,8 @@ class LinkedList:
             if i == pos:
                 break
             previous = current
+        else:
+            raise IndexError('index out of range')
         if previous:
             node.next = current
             previous.next = node
@@ -107,14 +106,14 @@ class LinkedList:
     def pop_node(self, pos: int) -> None:
         if not self.head:
             raise IndexError('pop from empty list')
-        elif (pos < 0) or (pos+1 > self.size):
-            raise IndexError('index out of range')
 
         previous = None
         for i, current in enumerate(self):
             if i == pos:
                 break
             previous = current
+        else:
+            raise IndexError('index out of range')
         if previous:
             previous.next = current.next
         else:
