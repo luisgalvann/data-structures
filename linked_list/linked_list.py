@@ -83,7 +83,7 @@ class LinkedList:
         
         raise IndexError('index out of range')
 
-    def get_curprev(self, pos: int) -> Tuple[Any, Optional[Any]]:
+    def get_current(self, pos: int) -> Tuple[Any, Optional[Any]]:
         previous = None
         for i, current in enumerate(self):
             if i == pos:
@@ -97,11 +97,10 @@ class LinkedList:
         if pos == self.size:
             return self.set_tail(data)
 
-        current, previous = self.get_curprev(pos)
         node = self.Node(data)
-        if previous:
-            node.next = current
-            previous.next = node
+        if all(cur:= self.get_current(pos)):
+            node.next = [1]
+            cur[0].next = node
         else:
             node.next = self.head
             self.head = node
@@ -110,9 +109,7 @@ class LinkedList:
         if not self.head:
             raise IndexError('pop from empty list')
         
-        current, previous = self.get_curprev(pos)
-        if previous:
-            previous.next = current.next
+        if all(cur:= self.get_current(pos)):
+            cur[1].next = cur[0].next
         else:
-            self.head = current.next
-
+            self.head = cur[0].next
