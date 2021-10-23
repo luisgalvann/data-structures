@@ -82,7 +82,7 @@ class LinkedList:
                 return current.data
         raise IndexError('index out of range')
 
-    def get_current(self, pos: int) -> Tuple[Any, Optional[Any]]:
+    def get_nodes(self, pos: int) -> Tuple[Any, Optional[Any]]:
         previous = None
         for i, current in enumerate(self):
             if i == pos:
@@ -97,9 +97,9 @@ class LinkedList:
             return self.set_tail(data)
 
         node = self.Node(data)
-        if all(current:= self.get_current(pos)):
-            node.next = current[0]
-            current[-1].next = node
+        if all(nodes:= self.get_nodes(pos)):
+            node.next = nodes[0]
+            nodes[-1].next = node
         else:
             node.next = self.head
             self.head = node
@@ -108,7 +108,7 @@ class LinkedList:
         if not self.head:
             raise IndexError('pop from empty list')
         
-        if all(current:= self.get_current(pos)):
-            current[-1].next = current[0].next
+        if all(nodes:= self.get_nodes(pos)):
+            nodes[-1].next = nodes[0].next
         else:
-            self.head = current[0].next
+            self.head = nodes[0].next
