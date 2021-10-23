@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Tuple, TypeVar, Optional
 
 
 class LinkedList:
@@ -9,13 +9,13 @@ class LinkedList:
 
         def __init__(self, data) -> None:
             self.data: Any = data
-            self.next: Node = None
+            self.next: Any = None
         
         def __repr__(self) -> str:
             return str(self.data)
 
     def __init__(self) -> None:
-        self.head: Node = None
+        self.head: Any = None
 
     def __iter__(self) -> Any:
         current = self.head
@@ -87,14 +87,7 @@ class LinkedList:
         if pos == self.size:
             return self.set_tail(data)
 
-        previous = None
-        for i, current in enumerate(self):
-            if i == pos:
-                break
-            previous = current
-        else:
-            raise IndexError('index out of range')
-        
+        current, previous = self.get_previous(pos)
         node = self.Node(data)
         if previous:
             node.next = current
@@ -107,6 +100,13 @@ class LinkedList:
         if not self.head:
             raise IndexError('pop from empty list')
         
+        current, previous = self.get_previous(pos)
+        if previous:
+            previous.next = current.next
+        else:
+            self.head = current.next
+
+    def get_previous(self, pos: int) -> Tuple[Any, Optional[Any]]:
         previous = None
         for i, current in enumerate(self):
             if i == pos:
@@ -114,8 +114,5 @@ class LinkedList:
             previous = current
         else:
             raise IndexError('index out of range')
-        
-        if previous:
-            previous.next = current.next
-        else:
-            self.head = current.next
+
+        return current, previous
