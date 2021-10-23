@@ -77,14 +77,6 @@ class LinkedList:
                 return current.data
         raise IndexError('index out of range')
 
-    def get_prev(self, pos: int) -> Tuple[Any, Any]:
-        previous = None
-        for i, current in enumerate(self):
-            if i == pos:
-                return previous, current
-            previous = current
-        raise IndexError('index out of range')
-
     def set_node(self, pos: int, data: Any) -> None:
         if pos == 0:
             self.set_head(data)
@@ -104,3 +96,11 @@ class LinkedList:
         else:
             previous, current = self.get_prev(pos)
             previous.next = current.next
+
+    def get_prev(self, pos: int) -> Tuple[Any, Any]:
+        previous = None
+        for i, current in enumerate(self):
+            if i == pos:
+                return previous, current
+            previous = current
+        raise IndexError('index out of range')
