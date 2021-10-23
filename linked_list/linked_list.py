@@ -91,7 +91,6 @@ class LinkedList:
             previous = current
         else:
             raise IndexError('index out of range')
-
         return current, previous
 
     def set_node(self, pos: int, data: Any) -> None:
