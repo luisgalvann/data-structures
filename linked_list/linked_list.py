@@ -99,8 +99,8 @@ class LinkedList:
 
         node = self.Node(data)
         if all(cur:= self.get_current(pos)):
-            node.next = [1]
-            cur[0].next = node
+            node.next = cur[0]
+            cur[-1].next = node
         else:
             node.next = self.head
             self.head = node
@@ -110,6 +110,6 @@ class LinkedList:
             raise IndexError('pop from empty list')
         
         if all(cur:= self.get_current(pos)):
-            cur[1].next = cur[0].next
+            cur[-1].next = cur[0].next
         else:
             self.head = cur[0].next

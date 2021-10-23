@@ -88,12 +88,12 @@ class GetTest(TestCase):
         result = instance.get_node(0)
         self.assertEqual(result, first_element)
 
-        instance.set_node(1, second_element)
-        result = instance.get_node(1)
+        instance.set_node(0, second_element)
+        result = instance.get_node(0)
         self.assertEqual(result, second_element)
 
-        instance.set_node(0, third_element)
-        result = instance.get_node(0)
+        instance.set_node(1, third_element)
+        result = instance.get_node(1)
         self.assertEqual(result, third_element)
 
 
