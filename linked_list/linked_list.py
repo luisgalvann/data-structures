@@ -47,10 +47,7 @@ class LinkedList:
     def pop_head(self) -> None:
         if not self.head:
             raise IndexError('pop from empty list')
-        if self.head.next:
-            self.head = self.head.next
-        else:
-            self.head = None
+        self.head = self.head.next
 
     def get_tail(self) -> Any:
         if self.head:
