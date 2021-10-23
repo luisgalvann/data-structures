@@ -29,6 +29,9 @@ class LinkedList:
                 return True
         return False
 
+    def __getitem__(self, pos):
+        return [*self][pos]
+
     def __repr__(self) -> str:
         return str([*self])
 
