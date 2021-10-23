@@ -86,10 +86,10 @@ class LinkedList:
         raise IndexError('index out of range')
 
     def set_node(self, pos: int, data: Any) -> None:
-        if pos == self.size:
-            self.set_tail(data)
-        elif pos == 0:
+        if pos == 0:
             self.set_head(data)
+        elif pos == self.size:
+            self.set_tail(data)
         else:
             node = self.Node(data)
             previous, current = self.get_prev(pos)
