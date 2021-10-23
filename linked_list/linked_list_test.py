@@ -132,16 +132,20 @@ class PopTest(TestCase):
         instance = LinkedList()
         first_element = 25
         second_element = 'string'
+        third_element = [1, 'string', (1, 2)]
 
         instance.set_node(0, first_element)
         instance.set_node(0, second_element)
+        instance.set_node(0, third_element)
 
-        instance.pop_node(1)
+        instance.pop_node(2)
         self.assertNotIn(first_element, instance)
 
-        instance.pop_node(0)
+        instance.pop_node(1)
         self.assertNotIn(second_element, instance)
-
+        
+        instance.pop_node(0)
+        self.assertNotIn(third_element, instance)
 
 class SizeTest(TestCase):
     ''' Test the number of elements in the class '''

@@ -107,4 +107,5 @@ class LinkedList:
         if all(nodes:= self.get_nodes(pos)):
             nodes[0].next = nodes[1].next
         else:
-            self.head = None
+            self.head = self.head.next
+ 
