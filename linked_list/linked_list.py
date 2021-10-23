@@ -88,7 +88,6 @@ class LinkedList:
             return self.set_tail(data)
 
         previous = None
-        node = self.Node(data)
         for i, current in enumerate(self):
             if i == pos:
                 break
@@ -96,6 +95,7 @@ class LinkedList:
         else:
             raise IndexError('index out of range')
         
+        node = self.Node(data)
         if previous:
             node.next = current
             previous.next = node
