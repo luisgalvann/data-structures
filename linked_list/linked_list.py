@@ -81,11 +81,10 @@ class LinkedList:
         previous = None
         for i, current in enumerate(self):
             if i == pos:
-                break
+                return previous, current
             previous = current
         else:
             raise IndexError('index out of range')
-        return previous, current
 
     def set_node(self, pos: int, data: Any) -> None:
         if pos == self.size:
