@@ -47,6 +47,7 @@ class LinkedList:
     def pop_head(self) -> None:
         if not self.head:
             raise IndexError('pop from empty list')
+        
         if self.head.next:
             self.head = self.head.next
         else:
@@ -68,6 +69,7 @@ class LinkedList:
     def pop_tail(self) -> None:
         if not self.head:
             raise IndexError('pop from empty list')
+        
         if self.head.next:
             *_, previous, tail = self
             previous.next = None
@@ -78,6 +80,7 @@ class LinkedList:
         for i, current in enumerate(self):
             if i == pos:
                 return current.data
+        
         raise IndexError('index out of range')
 
     def set_node(self, pos: int, data: Any) -> None:
