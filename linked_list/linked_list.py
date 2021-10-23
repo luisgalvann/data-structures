@@ -83,6 +83,17 @@ class LinkedList:
         
         raise IndexError('index out of range')
 
+    def get_curprev(self, pos: int) -> Tuple[Any, Optional[Any]]:
+        previous = None
+        for i, current in enumerate(self):
+            if i == pos:
+                break
+            previous = current
+        else:
+            raise IndexError('index out of range')
+
+        return current, previous
+
     def set_node(self, pos: int, data: Any) -> None:
         if pos == self.size:
             return self.set_tail(data)
@@ -106,13 +117,3 @@ class LinkedList:
         else:
             self.head = current.next
 
-    def get_curprev(self, pos: int) -> Tuple[Any, Optional[Any]]:
-        previous = None
-        for i, current in enumerate(self):
-            if i == pos:
-                break
-            previous = current
-        else:
-            raise IndexError('index out of range')
-
-        return current, previous
