@@ -1,4 +1,4 @@
-from typing import Any, Tuple, Optional
+from typing import Any, Tuple
 
 
 class LinkedList:
@@ -90,7 +90,7 @@ class LinkedList:
     def set_node(self, pos: int, data: Any) -> None:
         if pos == self.size:
             self.set_tail(data)
-        elif not pos:
+        elif pos == 0:
             self.set_head(data)
         else:
             node = self.Node(data)
@@ -101,7 +101,7 @@ class LinkedList:
     def pop_node(self, pos: int) -> None:
         if not self.head:
             raise IndexError('pop from empty list')
-        if not pos:
+        if pos == 0:
             self.head = self.head.next
         else:
             previous, current = self.get_prev(pos)
