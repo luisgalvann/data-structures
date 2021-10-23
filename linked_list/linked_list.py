@@ -80,7 +80,7 @@ class LinkedList:
                 return current.data
         raise IndexError('index out of range')
 
-    def get_nodes(self, pos: int) -> Tuple[Any, Optional[Any]]:
+    def get_nodes(self, pos: int) -> Tuple[Optional[Any], Any]:
         previous = None
         for i, current in enumerate(self):
             if i == pos:
