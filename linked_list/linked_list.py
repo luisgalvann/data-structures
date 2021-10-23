@@ -5,7 +5,7 @@ class LinkedList:
     ''' Linked list class implementation '''
 
     class Node:
-        ''' Inner class «Node» implementation '''
+        ''' Inner «Node» class implementation '''
 
         def __init__(self, data) -> None:
             self.data: Any = data
