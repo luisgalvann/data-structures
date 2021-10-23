@@ -45,13 +45,12 @@ class LinkedList:
         self.head = node
 
     def pop_head(self) -> None:
-        if self.head:
-            if self.head.next:
-                self.head = self.head.next
-            else:
-                self.head = None
-        else:
+        if not self.head:
             raise IndexError('pop from empty list')
+        if self.head.next:
+            self.head = self.head.next
+        else:
+            self.head = None
 
     def get_tail(self) -> Any:
         if self.head:
@@ -67,26 +66,23 @@ class LinkedList:
             self.head = self.Node(data)
 
     def pop_tail(self) -> None:
-        if self.head:
-            if self.head.next:
-                *_, previous, tail = self
-                previous.next = None
-            else:
-                self.head = None
-        else:
+        if not self.head:
             raise IndexError('pop from empty list')
+        if self.head.next:
+            *_, previous, tail = self
+            previous.next = None
+        else:
+            self.head = None
 
     def get_node(self, pos: int) -> Any:
         for i, current in enumerate(self):
             if i == pos:
                 return current.data
-        else:
-            raise IndexError('index out of range')
+        raise IndexError('index out of range')
 
     def set_node(self, pos: int, data: Any) -> None:
         if pos == self.size:
-            self.set_tail(data)
-            return
+            return self.set_tail(data)
 
         previous = None
         node = self.Node(data)
@@ -106,7 +102,7 @@ class LinkedList:
     def pop_node(self, pos: int) -> None:
         if not self.head:
             raise IndexError('pop from empty list')
-
+        
         previous = None
         for i, current in enumerate(self):
             if i == pos:
