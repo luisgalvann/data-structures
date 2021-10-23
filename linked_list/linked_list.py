@@ -71,7 +71,7 @@ class LinkedList:
             raise IndexError('pop from empty list')
         
         if self.head.next:
-            *_, previous, tail = self
+            *_, previous, _ = self
             previous.next = None
         else:
             self.head = None
