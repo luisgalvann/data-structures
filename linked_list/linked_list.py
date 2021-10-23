@@ -89,8 +89,8 @@ class LinkedList:
 
     def set_node(self, pos: int, data: Any) -> None:
         if pos == self.size:
-            return self.set_tail(data)
-        if all(nodes:= self.get_nodes(pos)):
+            self.set_tail(data)
+        elif all(nodes:= self.get_nodes(pos)):
             node = self.Node(data)
             node.next = nodes[1]
             nodes[0].next = node
