@@ -88,15 +88,15 @@ class LinkedList:
             previous = current
         else:
             raise IndexError('index out of range')
-        return current, previous
+        return previous, current
 
     def set_node(self, pos: int, data: Any) -> None:
         if pos == self.size:
             return self.set_tail(data)
         node = self.Node(data)
         if all(nodes:= self.get_nodes(pos)):
-            node.next = nodes[0]
-            nodes[-1].next = node
+            node.next = nodes[1]
+            nodes[0].next = node
         else:
             node.next = self.head
             self.head = node
@@ -105,6 +105,6 @@ class LinkedList:
         if not self.head:
             raise IndexError('pop from empty list')
         if all(nodes:= self.get_nodes(pos)):
-            nodes[-1].next = nodes[0].next
+            nodes[0].next = nodes[1].next
         else:
-            self.head = nodes[0].next
+            self.head = nodes[1].next
