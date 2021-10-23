@@ -95,6 +95,7 @@ class LinkedList:
             previous = current
         else:
             raise IndexError('index out of range')
+        
         if previous:
             node.next = current
             previous.next = node
@@ -113,6 +114,7 @@ class LinkedList:
             previous = current
         else:
             raise IndexError('index out of range')
+        
         if previous:
             previous.next = current.next
         else:
